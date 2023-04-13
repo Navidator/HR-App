@@ -1,0 +1,62 @@
+﻿@using JobInterviewProject.MVC.Models;
+@model EditEmployeeViewModel
+@{
+}
+
+<div class="row justify-content-center">
+    <form method="post" action="AddEmployee">
+        <div class="mb-3">
+            <label for="Personal Id" class="form-label">Personal Id</label>
+            <input type="text" class="form-control" asp-for="PersonalId" required>
+        </div>
+        <div class="mb-3">
+            <label for="First Name" class="form-label">First Name</label>
+            <input type="text" class="form-control" asp-for="Name" required>
+        </div>
+        <div class="mb-3">
+            <label for="Last Name" class="form-label">Last Name</label>
+            <input type="text" class="form-control" asp-for="LastName" required>
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-label">Email address</label>
+            <input type="email" class="form-control" asp-for="Email" required>
+        </div>
+        <div class="mb-3">
+            <label for="Gender" class="form-label">Gender</label>
+            @Html.DropDownListFor(x => x.UserGender, Enum.GetValues(typeof(Gender))
+            .Cast<Gender>()
+            .Select(g => new SelectListItem
+            {
+            Value = g.ToString(),
+            Text = g.ToString()
+            })
+            .ToList(), new { @class = "btn btn-outline-secondary dropdown-toggle"})
+        </div>
+        <div class="form-group col-2 mb-3">
+            <label>Date of birth </label>
+            <input type="date" class="form-control" id="dateOfBirth" asp-for="DateOfBirth" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="Position" class="form-label">Position</label>
+            <input type="text" class="form-control" asp-for="Position" required>
+        </div>
+        <div class="mb-3">
+            <label for="Status" class="form-label">Status</label>
+            @Html.DropDownListFor(x => x.UserGender, Enum.GetValues(typeof(Status))
+            .Cast<Status>()
+            .Select(g => new SelectListItem
+            {
+            Value = g.ToString(),
+            Text = g.ToString()
+            })
+            .ToList(), new { @class = "btn btn-outline-secondary dropdown-toggle"})
+        </div>
+        <div class="form-group col-2 mb-3">
+            <label>Date of fire </label>
+            <input type="date" class="form-control" id="date" asp-for="DateOfFire">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

@@ -1,0 +1,14 @@
+﻿@model LoginViewModel
+
+<form method="post" action="Login">
+    <div class="mb-3">
+        <label for="" class="form-label">Email address</label>
+        <input type="email" class="form-control" asp-for="Email" required>
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Password</label>
+        <input type="password" class="form-control" asp-for="Password" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

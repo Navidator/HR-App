@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1 style="text-align:center">Welcome to HR Application</h1>
+<br />
+<div class="row" style="width:100%">
+    <div class="col-md-6" style="text-align:center">
+        <h2 style="white-space: nowrap">Existing user?</h2>
+        <br />
+        <a class="btn btn-primary" asp-controller="Auth" asp-action="Login">Login</a>
+    </div>
+    <div class="col-md-6" style="text-align:center">
+        <h2 style="white-space: nowrap">New user?</h2>
+        <br />
+        <a class="btn btn-primary" asp-controller="Auth" asp-action="Register">Register</a>
+    </div>
+</div>
+

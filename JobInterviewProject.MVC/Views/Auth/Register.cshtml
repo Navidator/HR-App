@@ -1,0 +1,49 @@
+﻿@model RegisterViewModel
+@{
+}
+
+<div class="row justify-content-center">
+    <form method="post" action="Register">
+        <div class="mb-3">
+            <label for="First Name" class="form-label">First Name</label>
+            <input type="text" class="form-control" asp-for="FirstName" required>
+        </div>
+        <div class="mb-3">
+            <label for="Last Name" class="form-label">Last Name</label>
+            <input type="text" class="form-control" asp-for="LastName" required>
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-label">Email address</label>
+            <input type="email" class="form-control" asp-for="Email" required>
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-label">Password</label>
+            <input type="password" class="form-control" asp-for="Password" required>
+        </div>
+        <div class="mb-3">
+            <label for="Username" class="form-label">UserName</label>
+            <input type="text" class="form-control" asp-for="UserName">
+        </div>
+        <div class="mb-3">
+            <label for="Personal Id" class="form-label">Personal Id</label>
+            <input type="text" class="form-control" asp-for="PersonalId">
+        </div>
+        <div class="mb-3">
+            <label for="Gender" class="form-label">Gender</label>
+            @Html.DropDownListFor(x => x.UserGender, Enum.GetValues(typeof(Gender))
+            .Cast<Gender>()
+            .Select(g => new SelectListItem
+            {
+            Value = g.ToString(),
+            Text = g.ToString()
+            })
+            .ToList(), new { @class = "btn btn-outline-secondary dropdown-toggle"})
+        </div>
+        <div class="form-group col-2 mb-3">
+            <label>Date of birth </label>
+            <input type="date" class="form-control" id="date" asp-for="DateOfBirth">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

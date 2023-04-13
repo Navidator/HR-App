@@ -1,0 +1,63 @@
+﻿@model List<EmployeeViewModel>
+
+@{
+}
+<h1>Employees</h1>
+
+<div class="row">
+        <div class="col-md-4">
+        <a class="btn btn-primary" asp-controller="Employees" asp-action="AddEmployee">Add Employee</a>
+        </div>
+</div>
+
+<table class="table margin-top-sm ">
+    <thead>
+        <tr>
+            <th>Personal Id</th>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Email</th>
+            <th>Gender</th>
+            <th>Date of birth</th>
+            <th>Position</th>
+            <th>Status</th>
+            <th>Date of fire</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var employee in Model)
+        {
+            <tr>
+                <td>@employee.PersonalId</td>
+                <td>@employee.Name</td>
+                <td>@employee.LastName</td>
+                <td>@employee.Email</td>
+                <td>@employee.UserGender</td>
+                @if (@employee.DateOfBirth.HasValue)
+                {
+                    <td>@employee.DateOfBirth.Value.ToString("dd-MM-yyyy")</td>
+                }
+                else
+                {
+                    <td></td>
+                }
+                <td>@employee.Position</td>
+                <td>@employee.EmployeeStatus</td>
+                @if (@employee.DateOfFire.HasValue)
+                {
+                    <td>@employee.DateOfFire.Value.ToString("dd-MM-yyyy")</td>
+                }
+                else
+                {
+                    <td></td>
+                }
+                <td>
+                    @Html.ActionLink("Edit", "Edit", "Employees", new {id = employee.PersonalId}, new { @class = "btn btn-small btn-primary margin-righ-sm" })
+                    @Html.ActionLink("Remove", "Remove", "Employees", new {id = employee.PersonalId}, new { @class = "btn btn-small btn-danger", onclick = "return confirmDelete();" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
